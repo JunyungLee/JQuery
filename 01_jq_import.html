@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery import</title>
+    <!-- jQuery import 방식1 -->
+    <!--<script src="js/jquery-3.7.1.min.js"></script>-->
+    <!-- jQuery import 방식2 - CDN 방식 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    console.log("head JavaScript 시작~~~");
+    
+    //JavaScript DOM 객체 다루기
+    window.onload = function(){ /*문서가 로딩 완료된 다음 실행*/
+        console.log("window.onload 이벤트~~~");
+        document.getElementById("id1").style.color = "blue";
+    };
+    
+    //제이쿼리(jQuery) 사용방식 3가지
+    //방식1 : jQuery(document).ready(function(){});
+//           $(document).ready(function(){});
+    jQuery(document).ready(function(){
+        console.log("jQuery document ready ~~~");
+//        jQuery("#id1").css("background-color","yellow");
+    });
+    $(document).ready(function(){
+       $("#id1").css("border", "3px solid red"); 
+    });
+    //---------------
+    //방식2 : $().ready(function(){});
+    $().ready(function(){
+        $("#id1").css("background-color", "orange");
+    });
+    //----------------
+    //방식3 : $(function(){});
+    $(function(){
+        $("#id1").css("background-color","green");
+    });
+    
+</script>
+</head>
+<body>
+   <h1 id="id1">제이쿼리(jQuery)</h1>
+    
+    
+<script>
+    console.log("body끝 JavaScript~~~");
+//    document.querySelector("#id1").style.backgroundColor = "aqua";
+    /*순서 중요 -> body태그 내 읽은 후*/
+    $("#id1").css("background-color","lightgreen");
+</script>
+    
+    
+</body>
+</html>

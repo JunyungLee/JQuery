@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>eq, contains, find</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    /* 필터 선택자 - 선택자에 콜른(:) 기호를 포함하는 선택자
+    :contains(문자열) - 문자열을 포함하고 있는 요소
+    :eq(index) : 인덱스 번호에 해당하는 요소
+    :gt(index) : 인덱스 번호보다 큰 요소
+    :lt(index) : 인덱스 번호보다 작은 요소
+    :$(선택자).find(필터) : 자녀(자손) 태그 중 필터링해서 찾기
+    .parent() : 부모요소 선택
+    .siblings() : 형제요소 선택
+    *************************************/
+//    $(document).ready(function(){});
+//    $().ready(function(){});
+    $(function(){
+//        $("td:contains('Java')")
+//            .siblings()// 왜 형제 요소가 아닌거지?
+//            .css("background-color","mistyrose");
+//        $("td:contains('JSP')")
+//            .css("border","3px solid deeppink")
+//            .siblings() //형제요소 선택
+//            .css("color","fuchsia")
+//            .parent()
+//            .css("background-color","LavenderBlush");
+        
+//        $("td:eq(2)").css("background-color","DarkSeaGreen");
+//        $("td:gt(2)").css("background-color","SeaGreen");
+//        $("td.lt(2)").css("background-color","ForestGreen");
+        
+        //$(선택자).find(필터) : 자녀(자손) 태그 중 필터링해서 찾기
+//        $("tbody").find("td:eq(0)").css("background-color","CadetBlue");
+//        $("td:contains('basic')")
+//            .parent()
+//            .find("td:gt(1)")
+//            .css("background-color","CornflowerBlue");
+//        $("thead th").css("background-color","DarkTurquoise");
+//        $("thead").find("th:eq(0)").css("background-color","LightBlue");
+        
+        $(".c1").find("th:eq(0)").css("background-color","Wheat");
+        $(".c1").find("th:eq(1)").css("background-color","Wheat");
+        $(".c1").find("th:eq(2)").css("background-color","Wheat");
+        
+        $(".c1 th:eq(0)").css("font-size","2em");
+        $(".c1 th:eq(1)").css("font-size","2em");
+        $(".c1 th:eq(2)").css("font-size","2em");
+        
+    });
+</script>
+</head>
+<body>
+    <table border>
+        <thead class="c1">
+            <tr>
+                <th>과목</th>
+                <th>상세내용</th>
+                <th>비고(버전)</th>
+            </tr>
+        </thead>
+        <tbody class="c1">
+            <tr>
+                <td>JSP</td>
+                <td>SERVLET, EL, JSP</td>
+                <td>2.3</td>
+            </tr>
+            <tr>
+                <td>Java</td>
+                <td>basic</td>
+                <td>8.0</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    
+</body>
+</html>
