@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>table 동적 생성(실습)</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    /*행과 열을 입력 받아 테이블 생성하기
+    val() 메소드 : value 값 읽기, 설정하기
+    1. <테이블 생성> 버튼에 이벤트 연결
+    2. input 태그 값을 읽어오기(행, 열)
+    
+    3. 행, 열 값에 맞추어 table 태그 작성
+    4. 원하는 위치(#myDiv)에 table 태그 추가(html() 사용)
+    *******************************/
+    $(function(){
+        $("#btn").click(function(){
+//            let row = parseInt($("#row").val());
+//            let column = parseInt($("#column").val());            
+            let row = $("#row").val();
+            let column = $("#column").val();
+      
+//            let tableHTML = "<table>";
+//            
+//            tableHTML+="<thead>";
+//            tableHTML+="<tr>";
+//            for(let i =0; i < row; i++) {
+//                 tableHTML +="<th>항목"+(i+1)+"</th>";
+//            }
+//            tableHTML += "</tr>";
+//            tableHTML+="</thead>";
+//            tableHTML += "<tbody>";
+//            for(let i =0; i < column; i++) {
+//                tableHTML += "<tr>";
+//                for(let j = 0; j < row; j++) {
+//                    tableHTML +="<td>내용"+(i+1)+","+(j+1)+"</td>";
+//                }
+//                tableHTML += "</tr>";
+//            }
+//            tableHTML+="</tbody>";
+//            tableHTML+="</table>";
+//            
+//            $("#myDiv").html(tableHTML); 
+            
+            //table <tr> 태그 자동으로 닫힘 -> jQuery에서는 tr태그 자동으로 닫힘!!
+//            let table = $("<table>");
+//                table.append("<thead>")
+//                    .append("<tr>");
+//                for(let i = 0; i< row; i++){
+//                    table.append("<th>항목"+(i+1)+"</th>");
+//                }
+//
+//                table.append("</tr>")
+//                    .append("</thead>");
+//            table.append("<tbody>");
+//            for(let i=0; i< column; i++) {
+//                table.append("<tr>");
+//                for(let j=0; j < row; j++){
+//                   table.append("<td>내용"+(i+1)+","+(j+1)+"</td>");
+//                }
+//                table.append("</tr>");
+//            }
+//            table.append("</tbody>")
+//                .append("</table>");
+//            
+//            $("#myDiv").html(table);
+            
+            
+            let table = $("<table>");
+            let tablehead = $("<thead>");
+            let tablebody = $("<tbody>");
+            
+            tablehead.append("<tr>");
+            for (let i = 0; i < row; i++) {
+                tablehead.append("<th>항목" + (i + 1) + "</th>");
+            }
+            tablehead.append("</tr>");
+            tablehead.append("</thead>");
+            
+            tablebody.append("<tbody>");
+            for (let i = 0; i < column; i++) {
+                tablebody.append("<tr>");
+                for (let j = 0; j < row; j++) {
+                    tablebody.append("<td>내용" + (i + 1) + "," + (j + 1) + "</td>");
+                }
+                tablebody.append("</tr>");
+            }
+            tablebody.append("</tbody>");
+            
+            table.append(tablehead)
+                .append(tablebody)
+                .append($("</table>"));
+            
+            $("#myDiv").html(table);
+
+
+        });
+    });
+    
+    
+</script>
+<style>
+    table, th, td {border: 1px solid black; }
+    #myDiv {background-color: lightblue; }
+</style>
+</head>
+<body>
+    <h2>테이블 동적 생성</h2>
+    <input type="text" id="row" value="2">행 &nbsp;
+    <input type="text" id="column" value="3">열 &nbsp;
+    <button id="btn">테이블 생성</button>
+    
+    <hr>
+    <div id="myDiv">
+        동적으로 테이블 생성할 영역
+    </div>
+    <hr><hr>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>항목1</th>
+                <th>항목2</th>
+                <th>항목3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>내용1</td>
+                <td>내용2</td>
+                <td>내용3</td>
+            </tr>
+            <tr>
+                <td>데이터1</td>
+                <td>데이터2</td>
+                <td>데이터3</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -36,21 +36,36 @@
         //.slice(시작인덱스, 끝인덱스) : 시작위치에서 끝 이전까지 선택 /*=substring*/
         //.slice(음수) : 뒤에서 부터
         //-----------------
-        $("ul>li").css("color","blue");
+//        $("ul>li").css("color","blue");
         // 2번째 부터 끝까지(인덱스 번호 1)
-        $("ul>li").slice(1).css("border","3px dashed red");
+//        $("ul>li").slice(1).css("border","3px dashed red");
         
         // 3번째(인덱스2)에서 5번째(인덱스4) 까지(인덱스 번호 5 이전까지)
-        $("ul>li").slice(2, 5).css("background-color","lightblue");
+//        $("ul>li").slice(2, 5).css("background-color","lightblue");
         
         // 맨뒤에서 3개 
-        $("ul>li").slice(-3).css("background-color","lightpink");
+//        $("ul>li").slice(-3).css("background-color","lightpink");
         
         //맨뒤에서 3개 중에 1개 빼고
-        $("ul>li").slice(-3, -1).css("background-color","green");
+//        $("ul>li").slice(-3, -1).css("background-color","green");
         
         //===========================
+        // children("선택자") : 자녀요소 선택
+//        $("ul").css("border", "3px solid red");
+//        $("ul").first().css("border","5px solid blue");
+//        $("ul").first().children().css("border","2px dashed orange");
         
+//        $("ul").first().children(":first").css("background-color","lightyellow");
+//        $("ul").first().children().first().css("background-color","lightpink");
+        
+//        $("ul").first().children(":last").css("background-color","lightblue");
+//        $("ul").first().children().last().css("background-color","lightgreen");
+        
+        //.next(), .prev() : 다음, 이전 요소 선택
+//        $("ul").first().children().first().next().css("background-color","orange");
+//        $("ul").first().children().last().prev().css("background-color","orchid");
+        
+        $(".li3").css("background-color","orange");
     });
 </script>
 <style>
