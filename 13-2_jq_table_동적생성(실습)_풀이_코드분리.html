@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>table 동적 생성(실습)</title>
+    <title>table 동적 생성(실습)-코드분리</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>    
 <script>
     /* 행과 열을 입력 받아 테이블 생성하기
@@ -16,19 +16,33 @@
     //$().ready(function(){});
     //$(function(){});
     $(document).ready(function(){
+        initEvent(); //초기화 작업(이벤트 연결)
+    });
+    
+    function initEvent(){
         //1. <테이블생성> 버튼에 이벤트 연결
-        $("#btn").on("click", function(){
-            //2. input 태그 값을 읽어오기(행, 열)
-            let rowCnt = $("#row").val(); //jQuery
-            //rowCnt = document.getElementById("row").value; //JavaScript
-            //rowCnt = document.querySelector("#row").value; //JavaScript
-            console.log("rowCnt : " + rowCnt);
+        $("#btn").on("click", btnMakeTable);
+    }
+    
+    //버튼 클릭시 table 만드는 함수
+    function btnMakeTable(){
+        //2. input 태그 값을 읽어오기(행, 열)
+        let rowCnt = $("#row").val(); 
+        console.log("rowCnt : " + rowCnt);
             
-            let colCnt = $("#col").val();
-            console.log("colCnt : " + colCnt);
+        let colCnt = $("#col").val();
+        console.log("colCnt : " + colCnt);
             
             //3. 행, 열 값에 맞추어 table 태그 작성
-            let htmlTag = "<table>";
+            let htmlTag = makeTable(rowCnt, colCnt);
+            
+            //4. 원하는 위치(#myDiv)에 table 태그 추가(html() 사용)
+            $("#myDiv").html(htmlTag);   
+    }
+    
+    //테이블 작성하는 기능
+    function makeTable(rowCnt, colCnt){
+        let htmlTag = "<table>";
             htmlTag += "<thead>";
             htmlTag += "<tr>";
             for (let col = 1; col <= colCnt; col++) {
@@ -48,12 +62,9 @@
             }
             htmlTag += "</tbody>";
             htmlTag += "</table>";
-            
-            //4. 원하는 위치(#myDiv)에 table 태그 추가(html() 사용)
-            document.getElementById("myDiv").innerHTML = htmlTag;
-//            $("#myDiv").html(htmlTag);
-        });
-    });
+        
+        return htmlTag;
+    }
 </script>
 <style>
     table, th, td { border: 1px solid black; }

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>fadeOut, fadeIn</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+//        let obj = "#car"; /*이미지만 다루기 -> div는 남아있음*/
+        let obj = "#myDiv";
+        
+        //Hide, show, toggle
+        $("button").eq(0).click(function(){
+            $(obj).hide("slow");
+        });
+        $("button").eq(1).click(function(){
+            $(obj).show("fast");
+        });
+        $("button").eq(2).click(function(){
+            $(obj).toggle(2000);
+        });
+        
+        //slideUp, slideDown, slideToggle
+        $("button").eq(3).click(function(){
+            $(obj).slideUp("fast");
+        });
+        $("button").eq(4).click(function(){
+            $(obj).slideDown("slow");
+        });
+        $("button").eq(5).click(function(){
+            $(obj).slideToggle(2000);
+        });
+        
+        //fadeOut, fadeIn, fadeToggle
+        $("button").eq(6).click(function(){
+            $(obj).fadeOut("slow");
+        });
+        $("button").eq(7).click(function(){
+            $(obj).fadeIn("slow");
+        });
+        $("button").eq(8).click(function(){
+            $(obj).fadeToggle(2000);
+        });
+        
+        //fadeTo
+        $("button").eq(9).click(function(){
+            $(obj).fadeTo(2000,0);
+        });
+        $("button").eq(10).click(function(){
+            $(obj).fadeTo(2000,0.2);
+        });
+        $("button").eq(11).click(function(){
+            $(obj).fadeTo(2000,0.6);
+        });
+        $("button").eq(12).click(function(){
+            $(obj).fadeTo(2000,1);
+        });
+        
+        
+    });
+</script>
+<style>
+    #myDiv { border : 3px solid blue; }
+</style>
+</head>
+<body>
+    <button>Hide</button>
+    <button>Show</button>
+    <button>Toggle(2seconds)</button>
+    <hr>
+    <button>slideUp(hide)</button>
+    <button>slideDown(show)</button>
+    <button>slideToggle(2seconds)</button>
+    <hr>
+    <button>FadeOut(faint hide)</button>
+    <button>FadeIn(clear show)</button>
+    <button>FadeToggle(2seconds)</button>
+    <hr>
+    <button>fadeTo(2000, 0)</button>
+    <button>fadeTo(2000, 0.2)</button>
+    <button>fadeTo(2000, 0.6)</button>
+    <button>fadeTo(2000, 1)</button>
+    <hr>
+    <div id="myDiv">
+        <img src="images/car3.jpg" id="car" alt="자동차">
+    </div>
+    <hr>
+    <p>안녕하세요~반갑습니다</p>
+    
+    
+</body>
+</html>
