@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>rolling slide banner</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+    * { margin : 0; padding : 0;}
+    h2 { text-align: center; }
+    #banner-wrap {
+        width : 600px;
+        border : 1px solid gray;
+        padding : 20px;
+        margin: 50px auto;
+    }
+    #frame {
+        width: 600px;
+        position:relative;
+        overflow: hidden;
+    }
+    #banner {width : 3000px;}
+    #banner img {width : 200px;}
+    #banner li {
+        list-style: none;
+        float: left;
+    }
+    #banner-wrap p { text-align: center; font-size: 2em;}
+    #banner-wrap p > a { text-decoration: none}
+</style>
+<script>
+    $(function(){
+        let $list = $("#banner"); 
+        console.log(":: 이미지 갯수 : " + $("#banner img").length);
+        
+        let clickCnt = 0;
+        //next : 좌측 마진 값에서 -200 처리
+        $("#next").click(function(){
+            console.log(">이동 전 margin-left  : " + $list.css("margin-left"));
+            clickCnt++;
+            console.log("clickCnt : " + clickCnt);
+            
+            if(clickCnt > 5){ //사용 이미지 갯수보다 많아지면
+                $list.css("margin-left","0px"); 
+                clickCnt = 1;
+            }
+            let marginLeft = -200 * clickCnt;
+             
+            $list.animate({"margin-left" : marginLeft}, 300);
+            console.log(">이동 후 margin-left : " + $list.css("margin-left"));
+        });
+        
+        //(실습)prev : 이전 버튼 클릭시 
+        $("#prev").click(function(){
+            console.log(">이동 전 margin-left  : " + $list.css("margin-left"));
+            clickCnt++;
+            console.log("clickCnt : " + clickCnt);
+            
+            if(clickCnt > 5){ //사용 이미지 갯수보다 많아지면
+                $list.css("margin-left","0px"); 
+                clickCnt = 1;
+            }
+            let marginLeft = -200 * clickCnt;
+             
+            $list.animate({"margin-left" : marginLeft}, 300);
+            console.log(">이동 후 margin-left : " + $list.css("margin-left"));
+        });
+        
+    });
+</script>
+</head>
+<body>
+    <h2>Make Rolling Slide Banner</h2>
+    <hr>
+    <div id="banner-wrap">
+        <div id="frame">
+            <ul id="banner">
+                <li><a href="#"><img src="img/number1.jpg"></a></li>
+                <li><a href="#"><img src="img/number2.jpg"></a></li>
+                <li><a href="#"><img src="img/number3.jpg"></a></li>
+                <li><a href="#"><img src="img/number4.jpg"></a></li>
+                <li><a href="#"><img src="img/number5.jpg"></a></li>
+                
+                <li><a href="#"><img src="img/number1.jpg"></a></li>
+                <li><a href="#"><img src="img/number2.jpg"></a></li>
+                <li><a href="#"><img src="img/number3.jpg"></a></li>
+<!--
+                <li><a href="#"><img src="img/1.jpg"></a></li>
+                <li><a href="#"><img src="img/2.jpg"></a></li>
+                <li><a href="#"><img src="img/5.jpg"></a></li>
+                <li><a href="#"><img src="img/6.jpg"></a></li>
+                <li><a href="#"><img src="img/7.jpg"></a></li>
+-->
+            </ul>
+        </div>
+        <p>
+            <a href="#" id="prev">
+                <img src="images/prev_btn.png">
+            </a>
+            <span>이전으로 </span>
+            <a href="#" id="next">
+                <img src="images/next_btn.png">
+            </a>
+            <span>다음으로</span>
+        </p>
+    </div>
+    
+    
+</body>
+</html>
