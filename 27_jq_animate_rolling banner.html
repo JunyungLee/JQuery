@@ -48,21 +48,30 @@
             $list.animate({"margin-left" : marginLeft}, 300);
             console.log(">이동 후 margin-left : " + $list.css("margin-left"));
         });
+        //===============================
+        //trigger 메소드!
+        setInterval(function(){
+            //$("next").click(); // 클릭이벤트 발생
+            $("next").trigger("click");
+        });
+        //====================================
+        
         
         //(실습)prev : 이전 버튼 클릭시 
+        //prev : 우측 마진 값에서 200 처리
         $("#prev").click(function(){
-            console.log(">이동 전 margin-left  : " + $list.css("margin-left"));
-            clickCnt++;
+            console.log(">이동전 margin-left : " + $list.css("margin-left"));
+            clickCnt--;
             console.log("clickCnt : " + clickCnt);
             
-            if(clickCnt > 5){ //사용 이미지 갯수보다 많아지면
-                $list.css("margin-left","0px"); 
-                clickCnt = 1;
+            if (clickCnt < 0) { //첫 번째 이미지 이전으로 가면
+                clickCnt = 4;
+                $list.css("margin-left", "-1000px");
             }
+                
             let marginLeft = -200 * clickCnt;
-             
-            $list.animate({"margin-left" : marginLeft}, 300);
-            console.log(">이동 후 margin-left : " + $list.css("margin-left"));
+            $list.animate({"margin-left": marginLeft}, 1000);
+            console.log(">이동후 margin-left : " + marginLeft);
         });
         
     });
